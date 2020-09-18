@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lab 2</title>
+
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+        crossorigin=""/>
+
+        <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+        integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+        crossorigin=""></script>
+
+    </head>
+
+    <body>
+        <div id="map" style="height: 500px"></div>
+
+        <script type="text/javascript">
+
+          var map = L.map('map', {
+              center: [38.16, -96.96],
+              zoom: 4
+          });
+
+          L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+               attribution: '@ <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+               maxZoom: 4,
+               minZoom: 4
+            }).addTo(map);
+
+            var photographyIcon = L.icon({
+              iconUrl: 'photography.png', // url that links to the icon image file
+              iconSize:     [38, 38], // size of the icon image in pixels
+              iconAnchor:   [19, 19], // the top left corner of the icon will be aligned so that this point is at the marker's geographical location
+              popupAnchor:  [0, -10] // point from which the popup should open, relative to the iconAnchor
+              });
+
+            var marker1 = L.marker([38.1095234,-81.3457988], {icon: photographyIcon}).addTo(map);
+            var marker2 = L.marker([40.3503939,-105.9566686], {icon: photographyIcon}).addTo(map);
+            var marker3 = L.marker([36.1249185,-115.3150859], {icon: photographyIcon}).addTo(map);
+
+            var pic1 = '<img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/Map_showing_Hampton_city%2C_Virginia.png" alt="HVA" width="250">';
+            var pic2 = '<img src="https://upload.wikimedia.org/wikipedia/commons/f/f5/Rocky_Mountain_01.jpg" alt="CORM" width="250">';
+            var pic3 = '<img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Welcome_to_Fabulous_Las_Vegas.jpg" alt="LVN" width="250">';
+
+            marker1.bindPopup('<p style="color:blue; font-weight:bold"> visited Hampton Virginia in 2019 for the first time </p>' + pic1);
+            marker2.bindPopup('<p style="color:seagreen; font-weight:bold"> visited Colorado for the second time in 2019 </p>' + pic2);
+            marker3.bindPopup('<p style="color:red; font-weight:bold"> the next state I want to visit next is Las Vegas Nevada </p>' + pic3);
+
+        </script>
+   </body>
+</html>
